@@ -1,0 +1,736 @@
+[
+    {
+        "id": "4c9052b45312a86c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "771eb579efc3ad88",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-custom",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#cc0000",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#cc0000",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#4B7930",
+                    "value": "#cc0000",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#cc0000",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#d1d1d1",
+                    "edited": true
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#ff1a1a",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": true
+                },
+                "widget-textColor": {
+                    "value": "#000000",
+                    "edited": true
+                },
+                "widget-backgroundColor": {
+                    "value": "#cc0000",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": true
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Monitoring",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "true",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "90a7d30f4c21fc03",
+        "type": "ui_group",
+        "name": "Compteur",
+        "tab": "14c897da06717aae",
+        "order": 4,
+        "disp": true,
+        "width": "18",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "14c897da06717aae",
+        "type": "ui_tab",
+        "name": "Ligne 1",
+        "icon": "fa-industry",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "809d644214b3f645",
+        "type": "ui_tab",
+        "name": "Ligne 2",
+        "icon": "fa-industry",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "5a276994d1d41eb9",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "809d644214b3f645",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "87ead2af68bf1b3f",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "5a276994d1d41eb9",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3ac4bc89581c4705",
+        "type": "ui_group",
+        "name": "Informations",
+        "tab": "14c897da06717aae",
+        "order": 1,
+        "disp": true,
+        "width": 9,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "36efc445f780e1d4",
+        "type": "ui_group",
+        "name": "Date",
+        "tab": "14c897da06717aae",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "94836e9a3fe091eb",
+        "type": "ui_group",
+        "name": "Évenements",
+        "tab": "14c897da06717aae",
+        "order": 2,
+        "disp": true,
+        "width": "9",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5d411f454d039179",
+        "type": "ui_group",
+        "name": "Arrêts",
+        "tab": "14c897da06717aae",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "98de2a34475ef11f",
+        "type": "ui_tab",
+        "name": "Ligne 3",
+        "icon": "fa-industry",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "2e1f7d6efd8648ce",
+        "type": "ui_tab",
+        "name": "Ligne 4",
+        "icon": "fa-industry",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "615289242b142757",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "98de2a34475ef11f",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "7f32225f4d85ab9f",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "615289242b142757",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "9bf6d3cf0e83084a",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "2e1f7d6efd8648ce",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "e9ca0809fd06f3f1",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "9bf6d3cf0e83084a",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "917e4091d4767e98",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "3ac4bc89581c4705",
+        "order": 2,
+        "width": 9,
+        "height": 1
+    },
+    {
+        "id": "a76b0d9d822c8631",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "36efc445f780e1d4",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "fe5e20e8e6c5d731",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "36efc445f780e1d4",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "37e802a5c27ab480",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "36efc445f780e1d4",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d507bb652d763826",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "36efc445f780e1d4",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a06513f3bc8bf3af",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "cd6ef65af1221e99",
+        "type": "sqlitedb",
+        "db": "monitoring.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "93c5bc104fada713",
+        "type": "ui_chart",
+        "z": "4c9052b45312a86c",
+        "name": "counter_chart",
+        "group": "90a7d30f4c21fc03",
+        "order": 1,
+        "width": 18,
+        "height": 8,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 840,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0d2713a1483cf17c",
+        "type": "ui_chart",
+        "z": "4c9052b45312a86c",
+        "name": "stop_chart",
+        "group": "5d411f454d039179",
+        "order": 1,
+        "width": 6,
+        "height": 9,
+        "label": "",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 910,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8b59a334a9c6a083",
+        "type": "ui_date_picker",
+        "z": "4c9052b45312a86c",
+        "name": "from",
+        "label": "du",
+        "group": "36efc445f780e1d4",
+        "order": 2,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 980,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "07a6e8cc20160f6f",
+        "type": "inject",
+        "z": "4c9052b45312a86c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"series\":[\"X\",\"Y\",\"Z\"],\"data\":[[5],[3],[6]],\"labels\":[\"Jan\"]}]",
+        "payloadType": "json",
+        "x": 480,
+        "y": 240,
+        "wires": [
+            [
+                "0d2713a1483cf17c"
+            ]
+        ]
+    },
+    {
+        "id": "4971ad20988cba08",
+        "type": "ui_date_picker",
+        "z": "4c9052b45312a86c",
+        "name": "to",
+        "label": "au",
+        "group": "36efc445f780e1d4",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 1130,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a12987ff48b38858",
+        "type": "ui_text",
+        "z": "4c9052b45312a86c",
+        "group": "3ac4bc89581c4705",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "state",
+        "label": "En fonctionnement",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1140,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ea9e0ef5d883bbc4",
+        "type": "ui_template",
+        "z": "4c9052b45312a86c",
+        "group": "3ac4bc89581c4705",
+        "name": "",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>\n\n<style>\n    .masonry-container {\n        width: 1400px;\n    }\n</style>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 480,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5643dc91943d3983",
+        "type": "ui_table",
+        "z": "4c9052b45312a86c",
+        "group": "94836e9a3fe091eb",
+        "name": "events",
+        "order": 1,
+        "width": 9,
+        "height": 3,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 870,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "bc380b4b.e2d668",
+        "type": "inject",
+        "z": "4c9052b45312a86c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"Date/time\":\"03/10/2021 13:21:54\",\"Severity\":\"Critical\",\"Cause\":\"Inconsistent data\"},{\"Date/time\":\"03/10/2021 11:34:22\",\"Severity\":\"Warning\",\"Cause\":\"Production line stopped\"},{\"Date/time\":\"\",\"Severity\":\"\",\"Cause\":\"\"},{\"Date/time\":\"\",\"Severity\":\"\",\"Cause\":\"\"},{\"Date/time\":\"\",\"Severity\":\"\",\"Cause\":\"\"}]",
+        "payloadType": "json",
+        "x": 710,
+        "y": 220,
+        "wires": [
+            [
+                "5643dc91943d3983"
+            ]
+        ]
+    },
+    {
+        "id": "70a46baed0ad0d98",
+        "type": "mqtt in",
+        "z": "4c9052b45312a86c",
+        "name": "",
+        "topic": "monitoring",
+        "qos": "1",
+        "datatype": "auto",
+        "broker": "a06513f3bc8bf3af",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 440,
+        "y": 740,
+        "wires": [
+            [
+                "a1816e6ce32389e8"
+            ]
+        ]
+    },
+    {
+        "id": "a1816e6ce32389e8",
+        "type": "json",
+        "z": "4c9052b45312a86c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 580,
+        "y": 740,
+        "wires": [
+            [
+                "53a3ad91fcf28acd"
+            ]
+        ]
+    },
+    {
+        "id": "53a3ad91fcf28acd",
+        "type": "function",
+        "z": "4c9052b45312a86c",
+        "name": "sql_query",
+        "func": "var data = msg.payload;\n\nif (data.hasOwnProperty(\"count\")) {\n    var date = new Date(data[\"time\"]);\n    date.setMinutes(0, 0, 0); // Resets also seconds and milliseconds\n    data[\"time\"] = date.toISOString();\n    \n    var hour = date.getHours();\n    if (context.get(\"last_hour\") != hour) {\n        msg.topic = \"INSERT INTO monitoring (time, sensor, count) \\\n                     VALUES ('\" + data[\"time\"] + \"', '\" + data[\"sensor\"] + \"', '\" + data[\"count\"] + \"');\";\n    \n        context.set(\"last_hour\", hour);\n    } else {\n        msg.topic = \"UPDATE monitoring \\\n                     SET count=count+'\" + data[\"count\"] + \"' \\\n                     WHERE id=(SELECT MAX(id) FROM monitoring);\"\n    }\n}\nelse if (data.hasOwnProperty(\"error\")) {\n    msg.topic = \"INSERT INTO errors (time, sensor, error) \\\n                 VALUES ('\" + data[\"time\"] + \"', '\" + data[\"sensor\"] + \"', '\" + data[\"error\"] + \"');\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 740,
+        "wires": [
+            [
+                "4e54577ba1bea706",
+                "cf4ee9089537e3bf"
+            ]
+        ]
+    },
+    {
+        "id": "4e54577ba1bea706",
+        "type": "debug",
+        "z": "4c9052b45312a86c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "cf4ee9089537e3bf",
+        "type": "sqlite",
+        "z": "4c9052b45312a86c",
+        "mydb": "cd6ef65af1221e99",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "insert_values",
+        "x": 970,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7da2c4f3fb73244a",
+        "type": "sqlite",
+        "z": "4c9052b45312a86c",
+        "mydb": "cd6ef65af1221e99",
+        "sqlquery": "fixed",
+        "sql": "SELECT * FROM monitoring ORDER BY id ASC LIMIT 24",
+        "name": "get_data",
+        "x": 470,
+        "y": 540,
+        "wires": [
+            [
+                "75e48315179cce24"
+            ]
+        ]
+    },
+    {
+        "id": "4f30b9825a8f36d4",
+        "type": "inject",
+        "z": "4c9052b45312a86c",
+        "name": "",
+        "props": [],
+        "repeat": "600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 290,
+        "y": 540,
+        "wires": [
+            [
+                "7da2c4f3fb73244a"
+            ]
+        ]
+    },
+    {
+        "id": "4cd6e1bab7260e36",
+        "type": "debug",
+        "z": "4c9052b45312a86c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "75e48315179cce24",
+        "type": "function",
+        "z": "4c9052b45312a86c",
+        "name": "convert",
+        "func": "var data = [];\nfor (let i = 0; i < msg.payload.length; i++) {\n    data.push({\"x\": msg.payload[i][\"time\"], \"y\": msg.payload[i][\"count\"]});\n}\n\nmsg.payload = [\n    {\n        \"series\": [\n            \"count\"\n        ],\n        \"data\": [data],\n        \"labels\": [\n            \"\"\n        ]\n    }\n];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 540,
+        "wires": [
+            [
+                "4cd6e1bab7260e36",
+                "93c5bc104fada713"
+            ]
+        ]
+    }
+]
