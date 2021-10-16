@@ -1,0 +1,34 @@
+@startuml Monitoring
+hide empty description
+
+header
+Monitoring
+endheader
+
+[*] --> Initialisation
+Initialisation : Configuration des entrées/sorties.
+
+Initialisation --> Fonctionnement
+state Fonctionnement {
+    Comptage -right-> Database : Si il y a une connexion
+    Database : Transfert de la valeur de comptage vers la\nbase de données avec le protocol MQTT.
+    Database : La variable est remise à zéro.
+    Comptage : Incrémentation de la variable\nde comptage.
+}
+
+Fonctionnement -right-> Erreur : Appui sur un bouton
+Erreur : La lumière rouge\nclignote 2 fois.
+
+Fonctionnement --> Défaut : Ligne de production à l'arrêt
+Défaut : La lumière rouge clignote 1Hz.
+
+Défaut -right-> Acquitement : Appui sur un bouton
+Acquitement : La lumière verte clignote une fois.\nL'erreur sélectionée est envoyée\nvers la base de données.
+
+Acquitement --> Fonctionnement
+
+footer
+Copyright (c) 2021 Florian Poot
+endfooter
+
+@enduml
