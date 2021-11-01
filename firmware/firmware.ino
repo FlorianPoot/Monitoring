@@ -16,7 +16,12 @@
 #include <Ethernet.h>
 #include <Ticker.h>        // Version 4.4.0
 
-#define BUTTON_1  CONTROLLINO_DI0
+#define PRODUCTION_LINE 1
+const byte mac[] = {0xDE, 0xED, 0xBA, 0xFE, 0xFE, 0xED};
+IPAddress ip(172, 16, 0, 100);
+IPAddress server(192, 168, 0, 131);
+
+#define BUTTON_1  CONTROLLINO_AI0
 #define BUTTON_2  CONTROLLINO_AI1
 #define BUTTON_3  CONTROLLINO_AI2
 #define BUTTON_4  CONTROLLINO_AI3
@@ -26,7 +31,8 @@
 #define GREEN_LED CONTROLLINO_DO0
 #define RED_LED   CONTROLLINO_DO1
 
-#define SENSOR    CONTROLLINO_AI0
+#define SENSOR    CONTROLLINO_DI0
+
 
 #define NORMAL_MODE  0
 #define FAULT_MODE   1
@@ -39,10 +45,6 @@ void error_led();
 
 const uint8_t buttons[] = {BUTTON_1, BUTTON_2, BUTTON_3, BUTTON_4, BUTTON_5, BUTTON_6};
 uint8_t current_mode = NORMAL_MODE;
-
-const byte mac[] = {0xDE, 0xED, 0xBA, 0xFE, 0xFE, 0xED};
-// IPAddress ip(172, 16, 0, 100);
-IPAddress server(192, 168, 0, 131);
 
 Ticker fault_timer(fault, 10000, 1);              // If no count in 10s, raise fault
 Ticker error_led_timer(error_led, 1000);          // Blink error led at 0.5Hz
@@ -79,9 +81,6 @@ void reconnect() {
         // Attempt to connect
         if (client.connect("controllinoClient1")) {
             Serial.println("connected");
-            // Once connected, publish an announcement...
-            // client.publish("outTopic", "hello world");
-            // client.subscribe("inTopic");
         } else {
             Serial.print("failed, rc=");
             Serial.print(client.state());
@@ -102,7 +101,7 @@ void setup() {
     // Enable serial for debugging
     Serial.begin(9600);
     Controllino_RTC_init();
-    Controllino_SetTimeDateStrings(__DATE__, __TIME__);  // Set compilation time to the RTC chip
+    // Controllino_SetTimeDateStrings(__DATE__, __TIME__);  // Set compilation time to the RTC chip
     
     // Panel LEDs
     pinMode(GREEN_LED, OUTPUT);
@@ -116,9 +115,7 @@ void setup() {
     client.setServer(server, 1883);
     client.setCallback(callback);
     Serial.print("Start ethernet... ");
-    while (!Ethernet.begin(mac)) {
-        Serial.print("failed ");
-    }
+    Ethernet.begin(mac, ip);
     // Allow the hardware to sort itself out
     delay(1500);
     Serial.print("ok, ip=");
@@ -151,11 +148,15 @@ void loop() {
         Serial.println("count");
         counting_value++;
 
+        if (current_mode == FAULT_MODE) {
+            // Unknown reasons
+            send_data("error", 7);
+        }
+
         // Reset timer
         fault_timer.stop();
         fault_timer.start();
         fault(false);
-        // TODO send error code
     }
     sensor_state = sensor_value;
 
@@ -177,7 +178,7 @@ void loop() {
     panel_buttons();
     
     // Only needed when using DHCP
-    Ethernet.maintain();
+    // Ethernet.maintain();
     
     // Reset watchdog
     wdt_reset();
@@ -233,6 +234,12 @@ void fault(bool faulty=true) {
     }
 }
 
+void get_time(char time_buffer[]) {
+    uint8_t day, weekday, month, year, hour, minute, second;
+    Controllino_ReadTimeDate(&day, &weekday, &month, &year, &hour, &minute, &second);
+    sprintf(time_buffer, "20%02d-%02d-%02dT%02d:%02d:%02d+00:00", year, month, day, hour, minute, second);  // ISO8601
+}
+
 bool send_data(char data_name[], uint16_t data) {
     StaticJsonDocument<256> JSONdata;
 
@@ -242,7 +249,7 @@ bool send_data(char data_name[], uint16_t data) {
     sprintf(time_buffer, "20%02d-%02d-%02dT%02d:%02d:%02d+00:00", year, month, day, hour, minute, second);  // ISO8601
     
     JSONdata["time"] = time_buffer;
-    JSONdata["sensor"] = "line_1";
+    JSONdata["sensor"] = PRODUCTION_LINE;
     JSONdata[data_name] = data;
 
     char JSONdata_buffer[256];
@@ -262,8 +269,6 @@ bool send_data(char data_name[], uint16_t data) {
 }
 
 void error_led() {
-    static bool led_state = false;
     // Invert led for blinking.
-    led_state = !led_state;
-    digitalWrite(RED_LED, led_state);
+    digitalWrite(RED_LED, !digitalRead(RED_LED));
 }

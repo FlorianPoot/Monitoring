@@ -165,17 +165,6 @@
         "className": ""
     },
     {
-        "id": "36efc445f780e1d4",
-        "type": "ui_group",
-        "name": "Date",
-        "tab": "14c897da06717aae",
-        "order": 3,
-        "disp": true,
-        "width": 6,
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "94836e9a3fe091eb",
         "type": "ui_group",
         "name": "Évenements",
@@ -254,56 +243,6 @@
         "height": 1
     },
     {
-        "id": "917e4091d4767e98",
-        "type": "ui_spacer",
-        "z": "4c9052b45312a86c",
-        "name": "spacer",
-        "group": "3ac4bc89581c4705",
-        "order": 2,
-        "width": 9,
-        "height": 1
-    },
-    {
-        "id": "a76b0d9d822c8631",
-        "type": "ui_spacer",
-        "z": "4c9052b45312a86c",
-        "name": "spacer",
-        "group": "36efc445f780e1d4",
-        "order": 1,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "fe5e20e8e6c5d731",
-        "type": "ui_spacer",
-        "z": "4c9052b45312a86c",
-        "name": "spacer",
-        "group": "36efc445f780e1d4",
-        "order": 3,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "37e802a5c27ab480",
-        "type": "ui_spacer",
-        "z": "4c9052b45312a86c",
-        "name": "spacer",
-        "group": "36efc445f780e1d4",
-        "order": 4,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "d507bb652d763826",
-        "type": "ui_spacer",
-        "z": "4c9052b45312a86c",
-        "name": "spacer",
-        "group": "36efc445f780e1d4",
-        "order": 6,
-        "width": 1,
-        "height": 1
-    },
-    {
         "id": "a06513f3bc8bf3af",
         "type": "mqtt-broker",
         "name": "",
@@ -333,6 +272,86 @@
         "type": "sqlitedb",
         "db": "monitoring.db",
         "mode": "RWC"
+    },
+    {
+        "id": "b0591a83b8db0e5b",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "36efc445f780e1d4",
+        "order": 1,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "db379ea9e878043e",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "36efc445f780e1d4",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6b7a3c93784f16e3",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "36efc445f780e1d4",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "055a6a93d40c4a7d",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "36efc445f780e1d4",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "49e27dd3c1920ef1",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "3ac4bc89581c4705",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6bf31292fcacb358",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "3ac4bc89581c4705",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "875f90f3ecb277e4",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "3ac4bc89581c4705",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "fb4b2f03c23c1aca",
+        "type": "ui_spacer",
+        "z": "4c9052b45312a86c",
+        "name": "spacer",
+        "group": "3ac4bc89581c4705",
+        "order": 7,
+        "width": 1,
+        "height": 1
     },
     {
         "id": "93c5bc104fada713",
@@ -372,8 +391,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 840,
-        "y": 540,
+        "x": 980,
+        "y": 320,
         "wires": [
             []
         ]
@@ -386,7 +405,7 @@
         "group": "5d411f454d039179",
         "order": 1,
         "width": 6,
-        "height": 9,
+        "height": 12,
         "label": "",
         "chartType": "bar",
         "legend": "false",
@@ -416,28 +435,8 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 910,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8b59a334a9c6a083",
-        "type": "ui_date_picker",
-        "z": "4c9052b45312a86c",
-        "name": "from",
-        "label": "du",
-        "group": "36efc445f780e1d4",
-        "order": 2,
-        "width": 4,
-        "height": 1,
-        "passthru": true,
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 980,
-        "y": 320,
+        "x": 1170,
+        "y": 640,
         "wires": [
             []
         ]
@@ -458,37 +457,17 @@
         ],
         "repeat": "",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "[{\"series\":[\"X\",\"Y\",\"Z\"],\"data\":[[5],[3],[6]],\"labels\":[\"Jan\"]}]",
+        "payload": "[{\"series\":[\"Arrêts\"],\"data\":[[5,3,6]],\"labels\":[\"5 min\",\"10 min\",\"Plus\"]}]",
         "payloadType": "json",
-        "x": 480,
-        "y": 240,
+        "x": 990,
+        "y": 720,
         "wires": [
             [
                 "0d2713a1483cf17c"
             ]
-        ]
-    },
-    {
-        "id": "4971ad20988cba08",
-        "type": "ui_date_picker",
-        "z": "4c9052b45312a86c",
-        "name": "to",
-        "label": "au",
-        "group": "36efc445f780e1d4",
-        "order": 5,
-        "width": 4,
-        "height": 1,
-        "passthru": true,
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 1130,
-        "y": 320,
-        "wires": [
-            []
         ]
     },
     {
@@ -497,15 +476,15 @@
         "z": "4c9052b45312a86c",
         "group": "3ac4bc89581c4705",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": 4,
+        "height": 1,
         "name": "state",
-        "label": "En fonctionnement",
-        "format": "{{msg.payload}}",
+        "label": "{{msg.payload}}",
+        "format": "",
         "layout": "row-spread",
         "className": "",
-        "x": 1140,
-        "y": 440,
+        "x": 710,
+        "y": 680,
         "wires": []
     },
     {
@@ -514,17 +493,17 @@
         "z": "4c9052b45312a86c",
         "group": "3ac4bc89581c4705",
         "name": "",
-        "order": 3,
+        "order": 8,
         "width": 0,
         "height": 0,
-        "format": "<div ng-bind-html=\"msg.payload\"></div>\n\n<style>\n    .masonry-container {\n        width: 1400px;\n    }\n</style>\n",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>\n\n<style>\n    .masonry-container {\n        width: 1400px;\n    },\n    .download_button {\n        padding: 100px;\n    }\n</style>\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 480,
-        "y": 420,
+        "x": 620,
+        "y": 200,
         "wires": [
             []
         ]
@@ -541,38 +520,9 @@
         "columns": [],
         "outputs": 0,
         "cts": false,
-        "x": 870,
-        "y": 220,
+        "x": 1150,
+        "y": 580,
         "wires": []
-    },
-    {
-        "id": "bc380b4b.e2d668",
-        "type": "inject",
-        "z": "4c9052b45312a86c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "[{\"Date/time\":\"03/10/2021 13:21:54\",\"Severity\":\"Critical\",\"Cause\":\"Inconsistent data\"},{\"Date/time\":\"03/10/2021 11:34:22\",\"Severity\":\"Warning\",\"Cause\":\"Production line stopped\"},{\"Date/time\":\"\",\"Severity\":\"\",\"Cause\":\"\"},{\"Date/time\":\"\",\"Severity\":\"\",\"Cause\":\"\"},{\"Date/time\":\"\",\"Severity\":\"\",\"Cause\":\"\"}]",
-        "payloadType": "json",
-        "x": 710,
-        "y": 220,
-        "wires": [
-            [
-                "5643dc91943d3983"
-            ]
-        ]
     },
     {
         "id": "70a46baed0ad0d98",
@@ -586,8 +536,8 @@
         "nl": false,
         "rap": true,
         "rh": 0,
-        "x": 440,
-        "y": 740,
+        "x": 240,
+        "y": 720,
         "wires": [
             [
                 "a1816e6ce32389e8"
@@ -602,11 +552,13 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 580,
-        "y": 740,
+        "x": 380,
+        "y": 720,
         "wires": [
             [
-                "53a3ad91fcf28acd"
+                "53a3ad91fcf28acd",
+                "f7d460aeaf3e1804",
+                "a2ec36d86c9430c9"
             ]
         ]
     },
@@ -615,14 +567,14 @@
         "type": "function",
         "z": "4c9052b45312a86c",
         "name": "sql_query",
-        "func": "var data = msg.payload;\n\nif (data.hasOwnProperty(\"count\")) {\n    var date = new Date(data[\"time\"]);\n    date.setMinutes(0, 0, 0); // Resets also seconds and milliseconds\n    data[\"time\"] = date.toISOString();\n    \n    var hour = date.getHours();\n    if (context.get(\"last_hour\") != hour) {\n        msg.topic = \"INSERT INTO monitoring (time, sensor, count) \\\n                     VALUES ('\" + data[\"time\"] + \"', '\" + data[\"sensor\"] + \"', '\" + data[\"count\"] + \"');\";\n    \n        context.set(\"last_hour\", hour);\n    } else {\n        msg.topic = \"UPDATE monitoring \\\n                     SET count=count+'\" + data[\"count\"] + \"' \\\n                     WHERE id=(SELECT MAX(id) FROM monitoring);\"\n    }\n}\nelse if (data.hasOwnProperty(\"error\")) {\n    msg.topic = \"INSERT INTO errors (time, sensor, error) \\\n                 VALUES ('\" + data[\"time\"] + \"', '\" + data[\"sensor\"] + \"', '\" + data[\"error\"] + \"');\";\n}\n\nreturn msg;",
+        "func": "var data = msg.payload;\n\nif (data.hasOwnProperty(\"count\")) {\n    var date = new Date(data[\"time\"]);\n    date.setMinutes(0, 0, 0); // Resets also seconds and milliseconds\n    data[\"time\"] = date.toISOString();\n    \n    var hour = date.getHours();\n    if (context.get(\"last_hour\") != hour) {\n        msg.topic = \"INSERT INTO monitoring (time, sensor, count) \\\n                     VALUES ('\" + data[\"time\"] + \"', '\" + data[\"sensor\"] + \"', '\" + data[\"count\"] + \"');\";\n    \n        context.set(\"last_hour\", hour);\n    } else {\n        msg.topic = \"UPDATE monitoring \\\n                     SET count=count+'\" + data[\"count\"] + \"' \\\n                     WHERE id=(SELECT MAX(id) FROM monitoring);\"\n    }\n}\nelse if (data.hasOwnProperty(\"error\")) {\n    msg.topic = \"INSERT INTO events (time, sensor, error) \\\n                 VALUES ('\" + data[\"time\"] + \"', '\" + data[\"sensor\"] + \"', '\" + data[\"error\"] + \"');\";\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 730,
-        "y": 740,
+        "x": 540,
+        "y": 780,
         "wires": [
             [
                 "4e54577ba1bea706",
@@ -643,8 +595,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 810,
-        "y": 820,
+        "x": 620,
+        "y": 860,
         "wires": []
     },
     {
@@ -655,8 +607,8 @@
         "sqlquery": "msg.topic",
         "sql": "",
         "name": "insert_values",
-        "x": 970,
-        "y": 740,
+        "x": 780,
+        "y": 780,
         "wires": [
             []
         ]
@@ -669,8 +621,8 @@
         "sqlquery": "fixed",
         "sql": "SELECT * FROM monitoring ORDER BY id ASC LIMIT 24",
         "name": "get_data",
-        "x": 470,
-        "y": 540,
+        "x": 610,
+        "y": 320,
         "wires": [
             [
                 "75e48315179cce24"
@@ -683,13 +635,14 @@
         "z": "4c9052b45312a86c",
         "name": "",
         "props": [],
-        "repeat": "600",
+        "repeat": "60",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 290,
-        "y": 540,
+        "payloadType": "str",
+        "x": 350,
+        "y": 320,
         "wires": [
             [
                 "7da2c4f3fb73244a"
@@ -701,7 +654,7 @@
         "type": "debug",
         "z": "4c9052b45312a86c",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -709,8 +662,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 810,
-        "y": 600,
+        "x": 950,
+        "y": 380,
         "wires": []
     },
     {
@@ -724,12 +677,168 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 650,
-        "y": 540,
+        "x": 790,
+        "y": 320,
         "wires": [
             [
                 "4cd6e1bab7260e36",
                 "93c5bc104fada713"
+            ]
+        ]
+    },
+    {
+        "id": "bf88146a351a2880",
+        "type": "sqlite",
+        "z": "4c9052b45312a86c",
+        "mydb": "cd6ef65af1221e99",
+        "sqlquery": "fixed",
+        "sql": "SELECT * FROM events ORDER BY id DESC LIMIT 30",
+        "name": "get_events",
+        "x": 770,
+        "y": 580,
+        "wires": [
+            [
+                "f5088a2c74baaa63",
+                "921d0f2d00011717"
+            ]
+        ]
+    },
+    {
+        "id": "f5088a2c74baaa63",
+        "type": "function",
+        "z": "4c9052b45312a86c",
+        "name": "convert",
+        "func": "var data = [];\nfor (let i = 0; i < msg.payload.length; i++) {\n    var time = msg.payload[i][\"time\"].split(\"+\")[0];\n    time = time.split(\"T\")[0] + \" \" + time.split(\"T\")[1];\n    \n    var cause;\n    switch (msg.payload[i][\"error\"]) {\n        case 0:\n            cause = \"Arrêt\";\n            break;\n        default:\n            cause = \"Reprise\";\n            \n    }\n    data.push({\"Date/heure\": time, \"Gravité\": \"Avertissement\", \"Cause\": cause});\n}\n\nmsg.payload = data;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 580,
+        "wires": [
+            [
+                "5643dc91943d3983"
+            ]
+        ]
+    },
+    {
+        "id": "8cf51b3d2393acfb",
+        "type": "ui_button",
+        "z": "4c9052b45312a86c",
+        "name": "download",
+        "group": "3ac4bc89581c4705",
+        "order": 3,
+        "width": 3,
+        "height": 2,
+        "passthru": false,
+        "label": "Télécharger CSV",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "download_button",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1310,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dab381dc0339ac5c",
+        "type": "ui_text",
+        "z": "4c9052b45312a86c",
+        "group": "3ac4bc89581c4705",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "name": "obj/min",
+        "label": "Objets par minute: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "x": 720,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "f7d460aeaf3e1804",
+        "type": "function",
+        "z": "4c9052b45312a86c",
+        "name": "get_number",
+        "func": "var data = msg.payload;\n\nif (data.hasOwnProperty(\"count\")) {\n    msg.payload = data[\"count\"];\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 720,
+        "wires": [
+            [
+                "dab381dc0339ac5c"
+            ]
+        ]
+    },
+    {
+        "id": "a2ec36d86c9430c9",
+        "type": "function",
+        "z": "4c9052b45312a86c",
+        "name": "get_state",
+        "func": "var data = msg.payload;\n\nif (data.hasOwnProperty(\"error\")) {\n    if (data[\"error\"] > 0) {\n        msg.payload = \"En fonctionnement\";\n    } else {\n        msg.payload = \"À l'arrêt\";\n    }\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 680,
+        "wires": [
+            [
+                "a12987ff48b38858",
+                "bf88146a351a2880"
+            ]
+        ]
+    },
+    {
+        "id": "921d0f2d00011717",
+        "type": "function",
+        "z": "4c9052b45312a86c",
+        "name": "convert",
+        "func": "var data = msg.payload;\n\nvar less_5 = 0;\nvar less_10 = 0;\nvar others = 0;\n\nvar start_time;\nvar stop_time;\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    if (data[i][\"error\"] > 0) {\n        stop_time = new Date(msg.payload[i][\"time\"]);\n    } else if (stop_time != null) {\n        start_time = new Date(msg.payload[i][\"time\"]);\n    }\n    \n    if (start_time != null && stop_time != null)\n    {\n        var delta_time = Math.floor(stop_time.getTime() / 60000) - Math.floor(start_time.getTime() / 60000);\n        node.warn(delta_time);\n        if (delta_time <= 5) {\n            less_5++;\n        }\n        else if (delta_time <= 10) {\n            less_10++;\n        }\n        else {\n            others++;\n        }\n        \n        start_time = null;\n        stop_time = null;\n    }\n}\n\nmsg.payload = [\n    {\n        \"series\": [\n            \"Arrêts\"\n        ],\n        \"data\": [[less_5, less_10, others]],\n        \"labels\": [\n            \"5 min\",\n            \"10 min\",\n            \"Plus\"\n        ]\n    }\n];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 640,
+        "wires": [
+            [
+                "0d2713a1483cf17c"
+            ]
+        ]
+    },
+    {
+        "id": "d758154abc10a9ac",
+        "type": "inject",
+        "z": "4c9052b45312a86c",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 570,
+        "y": 580,
+        "wires": [
+            [
+                "bf88146a351a2880"
             ]
         ]
     }
