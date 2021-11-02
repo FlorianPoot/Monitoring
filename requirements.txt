@@ -1,0 +1,4 @@
+[node-red]
+node-red-dashboard
+node-red-node-ui-table
+node-red-contrib-stackhero-mysql

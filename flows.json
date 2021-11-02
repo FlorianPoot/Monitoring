@@ -2,9 +2,10 @@
     {
         "id": "4c9052b45312a86c",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Line 1",
         "disabled": false,
-        "info": ""
+        "info": "",
+        "env": []
     },
     {
         "id": "771eb579efc3ad88",
@@ -126,19 +127,10 @@
         "hidden": false
     },
     {
-        "id": "809d644214b3f645",
-        "type": "ui_tab",
-        "name": "Ligne 2",
-        "icon": "fa-industry",
-        "order": 2,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "5a276994d1d41eb9",
         "type": "ui_group",
         "name": "Group 1",
-        "tab": "809d644214b3f645",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": 6
@@ -187,28 +179,10 @@
         "className": ""
     },
     {
-        "id": "98de2a34475ef11f",
-        "type": "ui_tab",
-        "name": "Ligne 3",
-        "icon": "fa-industry",
-        "order": 3,
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "2e1f7d6efd8648ce",
-        "type": "ui_tab",
-        "name": "Ligne 4",
-        "icon": "fa-industry",
-        "order": 4,
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "615289242b142757",
         "type": "ui_group",
         "name": "Group 1",
-        "tab": "98de2a34475ef11f",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": 6
@@ -227,7 +201,7 @@
         "id": "9bf6d3cf0e83084a",
         "type": "ui_group",
         "name": "Group 1",
-        "tab": "2e1f7d6efd8648ce",
+        "tab": "",
         "order": 1,
         "disp": true,
         "width": 6
@@ -266,12 +240,6 @@
         "willPayload": "",
         "willMsg": {},
         "sessionExpiry": ""
-    },
-    {
-        "id": "cd6ef65af1221e99",
-        "type": "sqlitedb",
-        "db": "monitoring.db",
-        "mode": "RWC"
     },
     {
         "id": "b0591a83b8db0e5b",
@@ -352,6 +320,15 @@
         "order": 7,
         "width": 1,
         "height": 1
+    },
+    {
+        "id": "fc391bb0bf5ac955",
+        "type": "Stackhero-MySQL-Server",
+        "name": "",
+        "host": "localhost",
+        "port": "3306",
+        "tls": false,
+        "database": "monitoring"
     },
     {
         "id": "93c5bc104fada713",
@@ -479,7 +456,7 @@
         "width": 4,
         "height": 1,
         "name": "state",
-        "label": "{{msg.payload}}",
+        "label": "{{msg.message}}",
         "format": "",
         "layout": "row-spread",
         "className": "",
@@ -509,22 +486,6 @@
         ]
     },
     {
-        "id": "5643dc91943d3983",
-        "type": "ui_table",
-        "z": "4c9052b45312a86c",
-        "group": "94836e9a3fe091eb",
-        "name": "events",
-        "order": 1,
-        "width": 9,
-        "height": 3,
-        "columns": [],
-        "outputs": 0,
-        "cts": false,
-        "x": 1150,
-        "y": 580,
-        "wires": []
-    },
-    {
         "id": "70a46baed0ad0d98",
         "type": "mqtt in",
         "z": "4c9052b45312a86c",
@@ -536,11 +497,13 @@
         "nl": false,
         "rap": true,
         "rh": 0,
+        "inputs": 0,
         "x": 240,
         "y": 720,
         "wires": [
             [
-                "a1816e6ce32389e8"
+                "a1816e6ce32389e8",
+                "dd33138b79ffa766"
             ]
         ]
     },
@@ -558,7 +521,8 @@
             [
                 "53a3ad91fcf28acd",
                 "f7d460aeaf3e1804",
-                "a2ec36d86c9430c9"
+                "a2ec36d86c9430c9",
+                "f5ae2eb878c4a1d8"
             ]
         ]
     },
@@ -567,7 +531,7 @@
         "type": "function",
         "z": "4c9052b45312a86c",
         "name": "sql_query",
-        "func": "var data = msg.payload;\n\nif (data.hasOwnProperty(\"count\")) {\n    var date = new Date(data[\"time\"]);\n    date.setMinutes(0, 0, 0); // Resets also seconds and milliseconds\n    data[\"time\"] = date.toISOString();\n    \n    var hour = date.getHours();\n    if (context.get(\"last_hour\") != hour) {\n        msg.topic = \"INSERT INTO monitoring (time, sensor, count) \\\n                     VALUES ('\" + data[\"time\"] + \"', '\" + data[\"sensor\"] + \"', '\" + data[\"count\"] + \"');\";\n    \n        context.set(\"last_hour\", hour);\n    } else {\n        msg.topic = \"UPDATE monitoring \\\n                     SET count=count+'\" + data[\"count\"] + \"' \\\n                     WHERE id=(SELECT MAX(id) FROM monitoring);\"\n    }\n}\nelse if (data.hasOwnProperty(\"error\")) {\n    msg.topic = \"INSERT INTO events (time, sensor, error) \\\n                 VALUES ('\" + data[\"time\"] + \"', '\" + data[\"sensor\"] + \"', '\" + data[\"error\"] + \"');\";\n}\n\nreturn msg;",
+        "func": "var data = msg.payload;\n\nif (data.hasOwnProperty(\"count\")) {\n    /*var date = new Date(data[\"time\"]);\n    date.setMinutes(0, 0, 0); // Resets also seconds and milliseconds\n    data[\"time\"] = date.toISOString();\n    \n    var hour = date.getHours();\n    if (context.get(\"last_hour\") != hour) {\n        msg.topic = \"INSERT INTO monitoring (time, sensor, count) \\\n                     VALUES ('\" + data[\"time\"] + \"', '\" + data[\"sensor\"] + \"', '\" + data[\"count\"] + \"');\";\n    \n        context.set(\"last_hour\", hour);\n    } else {\n        msg.topic = \"UPDATE monitoring \\\n                     SET count=count+'\" + data[\"count\"] + \"' \\\n                     WHERE id=(SELECT MAX(id) FROM monitoring);\"\n    }*/\n    msg.topic = \"INSERT INTO monitoring (time, sensor, count) VALUES (:time, :sensor, :count)\";\n    msg.payload = {time: data[\"time\"], sensor: data[\"sensor\"], count: data[\"count\"]};\n    \n}\nelse if (data.hasOwnProperty(\"error\")) {\n    msg.topic = \"INSERT INTO events (time, sensor, error) VALUES (:time, :sensor, :error)\";\n    msg.payload = {time: data[\"time\"], sensor: data[\"sensor\"], error: data[\"error\"]};\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -578,7 +542,7 @@
         "wires": [
             [
                 "4e54577ba1bea706",
-                "cf4ee9089537e3bf"
+                "625cd8414c7715c7"
             ]
         ]
     },
@@ -587,7 +551,7 @@
         "type": "debug",
         "z": "4c9052b45312a86c",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -598,56 +562,6 @@
         "x": 620,
         "y": 860,
         "wires": []
-    },
-    {
-        "id": "cf4ee9089537e3bf",
-        "type": "sqlite",
-        "z": "4c9052b45312a86c",
-        "mydb": "cd6ef65af1221e99",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "insert_values",
-        "x": 780,
-        "y": 780,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "7da2c4f3fb73244a",
-        "type": "sqlite",
-        "z": "4c9052b45312a86c",
-        "mydb": "cd6ef65af1221e99",
-        "sqlquery": "fixed",
-        "sql": "SELECT * FROM monitoring ORDER BY id ASC LIMIT 24",
-        "name": "get_data",
-        "x": 610,
-        "y": 320,
-        "wires": [
-            [
-                "75e48315179cce24"
-            ]
-        ]
-    },
-    {
-        "id": "4f30b9825a8f36d4",
-        "type": "inject",
-        "z": "4c9052b45312a86c",
-        "name": "",
-        "props": [],
-        "repeat": "60",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "str",
-        "x": 350,
-        "y": 320,
-        "wires": [
-            [
-                "7da2c4f3fb73244a"
-            ]
-        ]
     },
     {
         "id": "4cd6e1bab7260e36",
@@ -687,23 +601,6 @@
         ]
     },
     {
-        "id": "bf88146a351a2880",
-        "type": "sqlite",
-        "z": "4c9052b45312a86c",
-        "mydb": "cd6ef65af1221e99",
-        "sqlquery": "fixed",
-        "sql": "SELECT * FROM events ORDER BY id DESC LIMIT 30",
-        "name": "get_events",
-        "x": 770,
-        "y": 580,
-        "wires": [
-            [
-                "f5088a2c74baaa63",
-                "921d0f2d00011717"
-            ]
-        ]
-    },
-    {
         "id": "f5088a2c74baaa63",
         "type": "function",
         "z": "4c9052b45312a86c",
@@ -720,32 +617,6 @@
             [
                 "5643dc91943d3983"
             ]
-        ]
-    },
-    {
-        "id": "8cf51b3d2393acfb",
-        "type": "ui_button",
-        "z": "4c9052b45312a86c",
-        "name": "download",
-        "group": "3ac4bc89581c4705",
-        "order": 3,
-        "width": 3,
-        "height": 2,
-        "passthru": false,
-        "label": "Télécharger CSV",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "download_button",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 1310,
-        "y": 320,
-        "wires": [
-            []
         ]
     },
     {
@@ -789,7 +660,7 @@
         "type": "function",
         "z": "4c9052b45312a86c",
         "name": "get_state",
-        "func": "var data = msg.payload;\n\nif (data.hasOwnProperty(\"error\")) {\n    if (data[\"error\"] > 0) {\n        msg.payload = \"En fonctionnement\";\n    } else {\n        msg.payload = \"À l'arrêt\";\n    }\n    return msg;\n}\n",
+        "func": "var data = msg.payload;\n\nif (data.hasOwnProperty(\"error\")) {\n    if (data[\"error\"] > 0) {\n        msg.message = \"En fonctionnement\";\n    } else {\n        msg.message = \"À l'arrêt\";\n    }\n    \n    msg.topic = \"SELECT * FROM events ORDER BY id DESC LIMIT 30\";\n    msg.payload = {};\n    return msg;\n}\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -800,7 +671,7 @@
         "wires": [
             [
                 "a12987ff48b38858",
-                "bf88146a351a2880"
+                "87095b828e1a874c"
             ]
         ]
     },
@@ -809,7 +680,7 @@
         "type": "function",
         "z": "4c9052b45312a86c",
         "name": "convert",
-        "func": "var data = msg.payload;\n\nvar less_5 = 0;\nvar less_10 = 0;\nvar others = 0;\n\nvar start_time;\nvar stop_time;\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    if (data[i][\"error\"] > 0) {\n        stop_time = new Date(msg.payload[i][\"time\"]);\n    } else if (stop_time != null) {\n        start_time = new Date(msg.payload[i][\"time\"]);\n    }\n    \n    if (start_time != null && stop_time != null)\n    {\n        var delta_time = Math.floor(stop_time.getTime() / 60000) - Math.floor(start_time.getTime() / 60000);\n        node.warn(delta_time);\n        if (delta_time <= 5) {\n            less_5++;\n        }\n        else if (delta_time <= 10) {\n            less_10++;\n        }\n        else {\n            others++;\n        }\n        \n        start_time = null;\n        stop_time = null;\n    }\n}\n\nmsg.payload = [\n    {\n        \"series\": [\n            \"Arrêts\"\n        ],\n        \"data\": [[less_5, less_10, others]],\n        \"labels\": [\n            \"5 min\",\n            \"10 min\",\n            \"Plus\"\n        ]\n    }\n];\n\nreturn msg;",
+        "func": "var data = msg.payload;\n\nvar less_5 = 0;\nvar less_10 = 0;\nvar others = 0;\n\nvar start_time;\nvar stop_time;\n\nfor (let i = 0; i < msg.payload.length; i++) {\n    if (data[i][\"error\"] > 0) {\n        stop_time = new Date(msg.payload[i][\"time\"]);\n    } else if (stop_time != null) {\n        start_time = new Date(msg.payload[i][\"time\"]);\n    }\n    \n    if (start_time != null && stop_time != null)\n    {\n        var delta_time = Math.floor(stop_time.getTime() / 60000) - Math.floor(start_time.getTime() / 60000);\n        if (delta_time <= 5) {\n            less_5++;\n        }\n        else if (delta_time <= 10) {\n            less_10++;\n        }\n        else {\n            others++;\n        }\n        \n        start_time = null;\n        stop_time = null;\n    }\n}\n\nmsg.payload = [\n    {\n        \"series\": [\n            \"Arrêts\"\n        ],\n        \"data\": [[less_5, less_10, others]],\n        \"labels\": [\n            \"5 min\",\n            \"10 min\",\n            \"Plus\"\n        ]\n    }\n];\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -827,19 +698,124 @@
         "id": "d758154abc10a9ac",
         "type": "inject",
         "z": "4c9052b45312a86c",
-        "name": "",
-        "props": [],
+        "name": "inject",
+        "props": [
+            {
+                "p": "message",
+                "v": "En fonctionnement",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
         "repeat": "",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
-        "topic": "",
+        "topic": "SELECT * FROM events ORDER BY id DESC LIMIT 30",
+        "payloadType": "str",
         "x": 570,
         "y": 580,
         "wires": [
             [
-                "bf88146a351a2880"
+                "a12987ff48b38858",
+                "87095b828e1a874c"
             ]
         ]
+    },
+    {
+        "id": "5643dc91943d3983",
+        "type": "ui_table",
+        "z": "4c9052b45312a86c",
+        "group": "94836e9a3fe091eb",
+        "name": "events",
+        "order": 1,
+        "width": 9,
+        "height": 3,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 1150,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "87095b828e1a874c",
+        "type": "Stackhero-MySQL",
+        "z": "4c9052b45312a86c",
+        "server": "fc391bb0bf5ac955",
+        "name": "get_events",
+        "x": 750,
+        "y": 580,
+        "wires": [
+            [
+                "f5088a2c74baaa63",
+                "921d0f2d00011717"
+            ]
+        ]
+    },
+    {
+        "id": "625cd8414c7715c7",
+        "type": "Stackhero-MySQL",
+        "z": "4c9052b45312a86c",
+        "server": "fc391bb0bf5ac955",
+        "name": "insert_values",
+        "x": 740,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e02556f1aaa0337c",
+        "type": "Stackhero-MySQL",
+        "z": "4c9052b45312a86c",
+        "server": "fc391bb0bf5ac955",
+        "name": "get_data",
+        "x": 620,
+        "y": 320,
+        "wires": [
+            [
+                "75e48315179cce24"
+            ]
+        ]
+    },
+    {
+        "id": "dd33138b79ffa766",
+        "type": "function",
+        "z": "4c9052b45312a86c",
+        "name": "query",
+        "func": "msg.topic = \"SELECT * FROM monitoring WHERE sensor=1 ORDER BY id DESC LIMIT 1440;\"\nmsg.payload = {};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 320,
+        "wires": [
+            [
+                "e02556f1aaa0337c"
+            ]
+        ]
+    },
+    {
+        "id": "f5ae2eb878c4a1d8",
+        "type": "debug",
+        "z": "4c9052b45312a86c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 840,
+        "wires": []
     }
 ]
