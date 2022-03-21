@@ -18,8 +18,8 @@
 
 #define PRODUCTION_LINE 1
 const byte mac[] = {0xDE, 0xED, 0xBA, 0xFE, 0xFE, 0xED};
-IPAddress ip(172, 16, 0, 100);
-IPAddress server(192, 168, 0, 131);
+// IPAddress ip(172, 16, 0, 100);
+IPAddress server(10, 100, 1, 20);
 
 #define BUTTON_1  CONTROLLINO_AI0
 #define BUTTON_2  CONTROLLINO_AI1
@@ -27,6 +27,7 @@ IPAddress server(192, 168, 0, 131);
 #define BUTTON_4  CONTROLLINO_AI3
 #define BUTTON_5  CONTROLLINO_AI4
 #define BUTTON_6  CONTROLLINO_AI5
+#define RELAY     CONTROLLINO_AI8
 
 #define GREEN_LED CONTROLLINO_DO0
 #define RED_LED   CONTROLLINO_DO1
@@ -45,6 +46,7 @@ void error_led();
 
 const uint8_t buttons[] = {BUTTON_1, BUTTON_2, BUTTON_3, BUTTON_4, BUTTON_5, BUTTON_6};
 uint8_t current_mode = NORMAL_MODE;
+int8_t error_number = 0;  // See errors_table.txt
 
 Ticker fault_timer(fault, 10000, 1);              // If no count in 10s, raise fault
 Ticker error_led_timer(error_led, 1000);          // Blink error led at 0.5Hz
@@ -115,17 +117,20 @@ void setup() {
     client.setServer(server, 1883);
     client.setCallback(callback);
     Serial.print("Start ethernet... ");
-    Ethernet.begin(mac, ip);
+    while (!Ethernet.begin(mac)) {
+        Serial.print("failed ");
+    }
     // Allow the hardware to sort itself out
     delay(1500);
     Serial.print("ok, ip=");
     Serial.println(Ethernet.localIP());
     
-    Serial.println("Initialize inputs and outputs");
-    // Initialize inputs and outputs
+    Serial.println("Initialize inputs");
+    // Initialize inputs
     for (uint8_t i = 0; i < 6; i++) {
         pinMode(buttons[i], INPUT_PULLUP);
     }
+    pinMode(RELAY, INPUT);
     pinMode(SENSOR, INPUT);
     
     // Enable watchdog (250ms)
@@ -149,8 +154,9 @@ void loop() {
         counting_value++;
 
         if (current_mode == FAULT_MODE) {
-            // Unknown reasons
-            send_data("error", 7);
+            // Send error code when restarting
+            send_data("error", error_number);
+            error_number = 0;
         }
 
         // Reset timer
@@ -176,9 +182,17 @@ void loop() {
     
     // Check if any buttons is press
     panel_buttons();
+
+    // Check for relay error
+    static bool relay_state = false;
+    bool relay_value = digitalRead(RELAY);
+    if (relay_value && relay_value != relay_state) {
+        error_number = 7;  // See errors_table.txt
+    }
+    relay_state = relay_value;
     
     // Only needed when using DHCP
-    // Ethernet.maintain();
+    Ethernet.maintain();
     
     // Reset watchdog
     wdt_reset();
@@ -202,9 +216,7 @@ void panel_buttons() {
                         error_led_blink_timer.start();
                     break;
                 case FAULT_MODE:
-                    // Send to server error number (1-6)
-                    send_data("error", i + 1);
-                    fault(false);
+                    error_number = i + 1;
                     break;
             }
         }
@@ -229,7 +241,7 @@ void fault(bool faulty=true) {
             digitalWrite(GREEN_LED, LOW);
 
             // Send error
-            send_data("error", 0);  // 0 means line stopped for unknown reason
+            send_data("error", -1);  // -1 means line stopped
         }
     }
 }
@@ -246,7 +258,7 @@ bool send_data(char data_name[], uint16_t data) {
     char time_buffer[40];
     uint8_t day, weekday, month, year, hour, minute, second;
     Controllino_ReadTimeDate(&day, &weekday, &month, &year, &hour, &minute, &second);
-    sprintf(time_buffer, "20%02d-%02d-%02dT%02d:%02d:%02d+00:00", year, month, day, hour, minute, second);  // ISO8601
+    sprintf(time_buffer, "20%02d-%02d-%02dT%02d:%02d:%02d", year, month, day, hour, minute, second);  // ISO8601
     
     JSONdata["time"] = time_buffer;
     JSONdata["sensor"] = PRODUCTION_LINE;
